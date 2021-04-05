@@ -112,5 +112,16 @@ namespace QuoteApp.Controllers
             }
             return Ok(quote);
         }
+        [NonAction]
+        private async Task AutoRemove()
+        {
+            foreach (var quote in await _context.Quotes.ToListAsync<Quote>())
+            {
+                if (quote.InsertDate.Month != DateTime.Now.Month)
+                {
+                    _context.Quotes.Remove(quote);
+                }
+            }
+        }
     }
 }
