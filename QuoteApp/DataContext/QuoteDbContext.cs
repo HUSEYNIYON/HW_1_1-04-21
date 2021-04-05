@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using QuoteApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace QuoteApp.DataContext
         protected QuoteDbContext()
         {
         }
+        public DbSet<Quote> Quotes{ get; set; }
     }
 }
